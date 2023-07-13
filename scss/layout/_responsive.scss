@@ -1,0 +1,170 @@
+/*-----------------------
+    Large devices (desktops, less than 1200px)
+-------------------------*/
+
+@media only screen and (max-width: 1199.98px) {
+  .header-menu-list ul li a {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 2.75rem;
+  }
+  h2 {
+    font-size: 2.03rem;
+  }
+  .h3,
+  h3 {
+    font-size: 1.4rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  .last-card-row {
+    margin-bottom: 30px;
+  }
+  .last-card-row1 {
+    margin-bottom: 0;
+  }
+}
+
+/*-----------------------
+      Medium devices (tablets, less than 992px)
+  -------------------------*/
+
+@media only screen and (max-width: 991.98px) {
+  h4 {
+    font-size: 1.2rem;
+  }
+  .header-menu-list ul li a {
+    font-size: 18px;
+  }
+  .user-menu-items a {
+    color: #212529;
+  }
+  .header {
+    padding: 0 15px 45px;
+  }
+}
+/*-----------------------
+      Small devices (landscape phones, 768px)
+  -------------------------*/
+
+@media only screen and (max-width: 767.98px) {
+  .user-block .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    top: calc(100% + 20px);
+  }
+  .dropdown:hover > .notification-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+  }
+  h1 {
+    font-size: 2.75rem;
+  }
+  h2 {
+    font-size: 2.03rem;
+  }
+  .h3,
+  h3 {
+    font-size: 1.3rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  .offcanvas-menu .user-notification-block ul li a.menu-style {
+    padding: 27px 14px 14px;
+  }
+  .user-notification-block ul li .badge {
+    right: 23px;
+  }
+  .login-wrapper .loginbox .login-left {
+    display: none;
+  }
+  .login-wrapper .loginbox {
+    max-width: 450px;
+    min-height: unset;
+  }
+  .login-wrapper .loginbox .login-right {
+    float: none;
+    padding: 1.875rem;
+    width: 100%;
+  }
+  .top-nav-search form {
+    width: 212px;
+  }
+}
+
+/*-----------------------
+      Extra small devices (portrait phones, less than 576px)
+  -------------------------*/
+
+@media only screen and (max-width: 575.98px) {
+  h1 {
+    font-size: 1.22rem;
+  }
+  h2 {
+    font-size: 1.67rem;
+  }
+  .h3,
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  .top-header-section {
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+  .page-wrapper {
+    padding: 0;
+    margin-top: -45px;
+  }
+  .header {
+    padding: 0 0px 45px;
+  }
+  .card {
+    margin-bottom: 15px;
+  }
+  .fc-toolbar .fc-right {
+    display: inline-block;
+    float: none;
+    margin: 10px auto 0;
+    width: 200px;
+    clear: both;
+  }
+  .fc-toolbar .fc-left {
+    float: none;
+    margin: 0 auto;
+    width: 200px;
+  }
+  .fc-toolbar .fc-center {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  .fc-toolbar .fc-center h2 {
+    width: 100%;
+  }
+  .fc button {
+    font-size: 14px;
+  }
+  .nav-pills .nav-link {
+    padding: 0.5rem 0.5rem;
+  }
+  .tab-list-emp li a {
+    padding: 0 5px;
+  }
+  .btn-add {
+    margin-bottom: 15px;
+  }
+  .last-card-row1 {
+    margin-bottom: 0;
+  }
+}
