@@ -1,0 +1,268 @@
+// I heard this slows the website down, or it has some other problems, find out
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i,800,800i&amp;display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+  font-weight: 300;
+  color: #212529;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  background-color: #f7f7f7;
+}
+
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+  line-height: 2rem;
+}
+
+li {
+  list-style: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  width: 100%;
+  padding: 0 20px;
+}
+
+button:focus {
+  outline: 0;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+hr {
+  border-top: 1px solid #ededed;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+::-ms-input-placeholder,
+::-ms-input-placeholder,
+::placeholder {
+  color: #898f96;
+}
+
+/*-----------------------
+	 BOOTSTRAP RESETS
+-------------------------*/
+.bg-primary {
+  background-color: #3e007c !important;
+}
+
+.text-primary {
+  color: #3e007c !important;
+}
+
+.text-danger {
+  color: #f62d51 !important;
+}
+
+.badge-primary {
+  background-color: #3e007c;
+  color: #fff;
+}
+
+a.text-primary:focus,
+a.text-primary:hover {
+  color: #f1bd06 !important;
+}
+
+a.text-warning:focus,
+a.text-warning:hover {
+  color: #dea705 !important;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  color: #dea705 !important;
+}
+
+.btn-outline-primary {
+  border-color: #3e007c;
+  color: #3e007c;
+
+  &:hover {
+    background-color: #3e007c;
+    border-color: #3e007c;
+    color: #fff;
+  }
+}
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #3e007c;
+  border-color: #3e007c;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  border-bottom: 5px solid #8e0a0a;
+  color: #fff;
+
+  &:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    border-bottom: 5px solid #7b111b;
+    color: #fff;
+  }
+}
+
+.form-control:focus {
+  outline: 0;
+  box-shadow: none;
+  border-color: #f1bd06 !important;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f4f6f9;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #3e007c;
+}
+
+.list-group-item {
+  border: 1px solid #ededed;
+
+  .active {
+    color: #fff;
+    background-color: #f1bd06;
+    border-color: #f1bd06;
+    z-index: 2;
+  }
+
+  &:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+}
+
+.card {
+  border: 1px solid #ededed;
+  margin-bottom: 30px;
+  border-radius: 10px;
+
+  &-header {
+    background: none;
+    padding: 1.25rem;
+    border-bottom: 1px solid #ededed;
+  }
+
+  &-title {
+    color: #333;
+    margin-bottom: 20px;
+  }
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  background: #e2e2e2;
+  border-radius: 10px;
+  border-bottom: 5px solid #ccc;
+}
+
+.nav-pills .nav-link {
+  color: #3e007c;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #3e007c;
+  border-radius: 10px;
+  border-bottom: 5px solid #f1bd06;
+}
+// END BOOTSTRAP RESETS
+
+@import "../partials/utilities";
+@import "../partials/loader";
