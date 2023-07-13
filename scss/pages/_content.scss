@@ -1,0 +1,140 @@
+.page-wrapper {
+  padding: 0px 15px 0 15px;
+  margin-top: -45px;
+}
+
+.page-title {
+  border-left: 3px solid #f1bd06;
+  border-right: 3px solid #f1bd06;
+}
+
+.team-lead .media {
+  align-items: center;
+}
+
+.e-avatar {
+  background-color: #fff;
+  border: 3px solid #e7e7e7;
+  border-radius: 50%;
+  height: 40px;
+  position: relative;
+  width: 40px;
+  margin-left: -20px;
+
+  &:first-of-type {
+    margin-left: 0 !important;
+  }
+
+  & > img {
+    border-radius: 50%;
+    width: 100%;
+  }
+}
+
+.avatar {
+  background-color: #3e007c;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  font-weight: 500;
+  height: 38px;
+  line-height: 34px;
+  margin: 0 -17px 0 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  width: 38px;
+  position: relative;
+  white-space: nowrap;
+  border: 3px solid #fff;
+  box-shadow: 0px 1px 5px 0px rgba(53, 53, 53, 0.3);
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.avatar-xs {
+    width: 24px;
+    height: 24px;
+  }
+
+  > img {
+    border-radius: 50%;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+.dash-card-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  min-height: 50px;
+}
+
+.dash-card-icon {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-right: 15px;
+
+  i {
+    width: 20px;
+  }
+}
+
+.dash-card-content {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.today-list .card-body .dash-card-content {
+  color: #333;
+}
+
+.dash-card-avatars {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  padding: 0 15px;
+  padding-right: 0;
+}
+
+.card-icon {
+  float: left;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  background: #26a69a;
+
+  .fa {
+    font-size: 24px;
+    margin: auto;
+    color: #fff;
+  }
+}
+
+.drop-active a {
+  min-width: 90px;
+}
+
+.quicklink-sidebar-menu ul li a {
+  display: block;
+}
+
+.admin-activ .recent-comment {
+  max-height: 390px;
+  overflow-y: auto;
+  position: relative;
+}
