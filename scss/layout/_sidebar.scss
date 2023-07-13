@@ -1,0 +1,32 @@
+.sidebar-wrapper {
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    border-bottom: 1px solid #ededed;
+    vertical-align: middle;
+
+    &:hover {
+      background: #ededed;
+    }
+  }
+
+  .first-slider-btn {
+    border-top-left-radius: 10px;
+  }
+
+  .second-slider-btn {
+    border-top-right-radius: 10px;
+  }
+
+  .last-slider-btn {
+    border-bottom-right-radius: 10px;
+  }
+
+  .last-slider-btn1 {
+    border-bottom-left-radius: 10px;
+  }
+}
