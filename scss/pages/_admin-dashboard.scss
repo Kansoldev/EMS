@@ -1,0 +1,28 @@
+.dash-widget .card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-right {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .card-title {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+// for the list of employees table
+.last-card-row,
+.last-card-row1 {
+  margin-bottom: 0;
+}
