@@ -24,21 +24,39 @@
             <div class="login-right-wrap">
               <h1 class="mb-3">Welcome, Admin</h1>
 
-              <form action="" method="">
-                <div class="form-group">
+              <form action="" method="" id="adminLoginForm">
+                <div class="form-group position-relative">
                   <input
                     type="text"
                     class="form-control"
+                    id="email"
+                    name="email"
                     placeholder="Email"
+                    data-parsley-required-message="Your email is required"
+                    data-parsley-pattern="/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/"
+                    data-parsley-pattern-message="Use a valid email address"
+                    required
                   />
+
+                  <span class="d-block invalid-feedback"></span>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group position-relative">
                   <input
-                    type="text"
+                    type="password"
                     class="form-control"
+                    id="password"
+                    name="password"
                     placeholder="Password"
+                    data-parsley-required-message="Your password is required"
+                    required
                   />
+
+                  <span class="eye-icon">
+                    <i class="fa fa-eye"></i>
+                  </span>
+
+                  <span class="d-block invalid-feedback"></span>
                 </div>
 
                 <div class="form-group">
@@ -61,3 +79,42 @@
     </div>
   </div>
 <?php require_once "../includes/footer.php" ?>
+
+<script src="<?php echo WEB_URL ?>js/parsley.min.js"></script>
+<script>
+  $(function () {
+    $("#adminLoginForm").parsley();
+    $("#adminLoginForm").on("submit", function (e) {
+      e.preventDefault();
+
+      if ($("#adminLoginForm").parsley().isValid()) {
+        $.ajax({
+          url: "auth/login.php",
+          method: "POST",
+          data: $(this).serialize(),
+          success: function (response) {
+            var data = JSON.parse(response);
+
+            if (data.length === 0) {
+              window.location = "dashboard.php";
+            }
+
+            if (data.email) {
+              $("#email").closest(".form-group").children(".invalid-feedback").text(data.email);
+              $("#email").on("input", function() {
+                $("#email").closest(".form-group").children(".invalid-feedback").text("");
+              })
+            }
+
+            if (data.password) {
+              $("#password").closest(".form-group").children(".invalid-feedback").text(data.password);
+              $("#password").on("input", function() {
+                $("#password").closest(".form-group").children(".invalid-feedback").text("");
+              })
+            }
+          }
+        });
+      }
+    });
+  });
+</script>
