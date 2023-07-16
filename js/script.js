@@ -102,3 +102,19 @@ $(document).mousedown(function (e) {
   }
   return true;
 });
+
+if (document.querySelector(".fa-eye")) {
+  document.querySelector(".fa-eye").addEventListener("click", (e) => {
+    const passwordFieldID = document.querySelector("#password");
+
+    if (passwordFieldID.type === "password") {
+      passwordFieldID.type = "text";
+      e.target.classList.remove("fa-eye");
+      e.target.classList.add("fa-eye-slash");
+    } else {
+      passwordFieldID.type = "password";
+      e.target.classList.remove("fa-eye-slash");
+      e.target.classList.add("fa-eye");
+    }
+  });
+}
