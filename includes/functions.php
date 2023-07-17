@@ -5,3 +5,11 @@
         $var = htmlentities($var, ENT_QUOTES, "UTF-8");
         return $var;
     }
+
+    function countTableAll($table) {
+        global $pdo;
+        
+        $stmt = $pdo->prepare("SELECT * FROM $table");
+        $stmt->execute();
+        return $stmt->rowCount();   
+    }
