@@ -54,7 +54,7 @@
                       >
                         <div class="user-avatar d-inline-block">
                           <img
-                            src="<?php echo WEB_URL ?>img/profiles/img-6.jpg"
+                            src="<?php echo WEB_URL ?>img/profiles/img-13.jpg"
                             alt="user avatar"
                             class="rounded-circle img-fluid"
                             width="55"
@@ -118,7 +118,7 @@
                     >
                       <div class="user-avatar d-inline-block mr-3">
                         <img
-                          src="<?php echo WEB_URL ?>img/profiles/img-6.jpg"
+                          src="<?php echo WEB_URL ?>img/profiles/img-13.jpg"
                           alt="user avatar"
                           class="rounded-circle img-fluid"
                           width="55"
