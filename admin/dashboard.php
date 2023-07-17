@@ -1,11 +1,6 @@
 <?php
   session_start();
 
-  if (!isset($_SESSION["admin"])) {
-    header("location: ../admin");
-    exit;
-  }
-
   $title = "EMS | Admin Dashboard";
 
   require_once "../config/db.php";
@@ -88,7 +83,7 @@
                           </span>
                         </a>
 
-                        <a href="#" class="dropdown-item p-2">
+                        <a href="auth/logout.php" class="dropdown-item p-2">
                           <span class="media align-items-center">
                             <span class="lnr lnr-power-switch mr-3"></span>
                             <span class="media-body text-truncate">
@@ -162,7 +157,7 @@
                       </span>
                     </a>
                     
-                    <a href="#" class="p-2">
+                    <a href="auth/logout.php" class="p-2">
                       <span class="media align-items-center">
                         <span class="lnr lnr-power-switch mr-3"></span>
                         <span class="media-body text-truncate text-left">
