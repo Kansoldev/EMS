@@ -347,18 +347,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-6 d-flex">
-                <div class="card ctm-border-radius shadow-sm flex-fill grow">
-                  <div class="card-header">
-                    <h4 class="card-title mb-0">Total Salary By Unit</h4>
-                  </div>
-
-                  <div class="card-body">
-                    <canvas id="lineChart"></canvas>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div class="row">
@@ -571,3 +559,6 @@
 
   <div class="sidebar-overlay" id="sidebar_overlay"></div>
 <?php require_once "../includes/footer.php" ?>
+
+<script src="<?php echo WEB_URL ?>js/chart.min.js"></script>
+<script src="<?php echo WEB_URL ?>js/chart.js"></script>
