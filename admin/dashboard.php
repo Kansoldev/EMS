@@ -1,11 +1,22 @@
 <?php
   session_start();
 
-  $title = "EMS | Admin Dashboard";
-  require_once "../includes/header.php";
-
   if (!isset($_SESSION["admin"])) {
     header("location: ../admin");
+    exit;
+  }
+
+  $title = "EMS | Admin Dashboard";
+
+  require_once "../config/db.php";
+  require_once "../includes/functions.php";
+  require_once "../includes/header.php";
+
+  $salaries = queryTableColumn("salaries", "salary");
+  $totalEmployeeSalaries = 0;
+
+  foreach ($salaries as $key => $employee) {
+    $totalEmployeeSalaries += $employee["salary"];
   }
 ?>
   <div class="inner-wrapper">
@@ -277,7 +288,7 @@
 
                     <div class="card-right">
                       <h4 class="card-title">Employees</h4>
-                      <p class="card-text">700</p>
+                      <p class="card-text"><?php echo countTableAll("employees") ?></p>
                     </div>
                   </div>
                 </div>
@@ -292,7 +303,7 @@
 
                     <div class="card-right">
                       <h4 class="card-title">Companies</h4>
-                      <p class="card-text">30</p>
+                      <p class="card-text">1</p>
                     </div>
                   </div>
                 </div>
@@ -307,7 +318,7 @@
 
                     <div class="card-right">
                       <h4 class="card-title">Leaves</h4>
-                      <p class="card-text">3</p>
+                      <p class="card-text">1</p>
                     </div>
                   </div>
                 </div>
@@ -322,7 +333,7 @@
 
                     <div class="card-right">
                       <h4 class="card-title">Salary</h4>
-                      <p class="card-text">$5.8M</p>
+                      <p class="card-text">₦<?php echo number_format($totalEmployeeSalaries) ?></p>
                     </div>
                   </div>
                 </div>
