@@ -13,3 +13,11 @@
         $stmt->execute();
         return $stmt->rowCount();   
     }
+
+    function queryTableColumn($table, $column) {
+        global $pdo;
+        
+        $stmt = $pdo->prepare("SELECT $column FROM $table");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
