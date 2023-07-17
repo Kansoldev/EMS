@@ -1,6 +1,12 @@
 <?php
+  session_start();
+
   $title = "EMS | Admin Dashboard";
   require_once "../includes/header.php";
+
+  if (!isset($_SESSION["admin"])) {
+    header("location: ../admin");
+  }
 ?>
   <div class="inner-wrapper">
     <div id="loader-wrapper">
@@ -175,7 +181,7 @@
                         <div class="col-md-12 mr-auto text-left">
                           <div class="custom-search input-group">
                             <div class="custom-breadcrumb">
-                              <ol class="breadcrumb no-bg-color d-inline-block p-0 m-0 mb-2">
+                              <ol class="breadcrumb no-bg-color d-inline-block p-0 m-0">
                                 <li class="breadcrumb-item d-inline-block">
                                   <a href="#" class="text-dark">Home</a>
                                 </li>
@@ -184,8 +190,6 @@
                                   Dashboard
                                 </li>
                               </ol>
-
-                              <h4 class="text-dark">Admin Dashboard</h4>
                             </div>
                           </div>
                         </div>
@@ -207,8 +211,7 @@
                   </div>
 
                   <div class="user-details">
-                    <h4><b>Welcome Admin</b></h4>
-                    <p>Sun, 29 Nov 2019</p>
+                    <h4><b>Welcome <?php echo $_SESSION["admin"] ?></b></h4>
                   </div>
                 </div>
               </div>
