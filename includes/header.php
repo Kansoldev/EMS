@@ -1,4 +1,13 @@
-<?php require_once "../config/config.php" ?>
+<?php
+  // Determine thCheck for the folder i am in (either admin or the root folder) to append the correct prefix
+  $prefix = "";
+
+  if (strpos($_SERVER['PHP_SELF'], "admin")) {
+    $prefix = "../";
+  }
+
+  require_once $prefix . "config/config.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
