@@ -1,0 +1,31 @@
+.widget-profile {
+  .profile-info-widget {
+    display: block;
+    text-align: center;
+
+    .booking-doc-img {
+      display: inline-block;
+      margin: 0 0 10px;
+      width: auto;
+      padding: 5px;
+      background-color: #f7f7f7;
+      border-radius: 50%;
+
+      img {
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
+}
+
+.profile-det-info {
+  overflow: hidden;
+
+  h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
