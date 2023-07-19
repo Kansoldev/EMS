@@ -32,27 +32,19 @@
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-12 theiaStickySidebar">
             <aside class="sidebar sidebar-user">
-              <div class="row">
-                <div class="col-12">
-                  <div class="card ctm-border-radius shadow-sm grow">
-                    <div class="card-body py-4">
-                      <div class="row">
-                        <div class="col-md-12 mr-auto text-left">
-                          <div class="custom-search input-group">
-                            <div class="custom-breadcrumb">
-                              <ol class="breadcrumb no-bg-color d-inline-block p-0 m-0">
-                                <li class="breadcrumb-item d-inline-block">
-                                  <a href="#" class="text-dark">Home</a>
-                                </li>
+              <div class="card ctm-border-radius shadow-sm grow">
+                <div class="card-body py-4">
+                  <div class="custom-search input-group">
+                    <div class="custom-breadcrumb">
+                      <ol class="breadcrumb no-bg-color d-inline-block p-0 m-0">
+                        <li class="breadcrumb-item d-inline-block">
+                          <a href="#" class="text-dark">Home</a>
+                        </li>
 
-                                <li class="breadcrumb-item d-inline-block active">
-                                  Dashboard
-                                </li>
-                              </ol>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        <li class="breadcrumb-item d-inline-block active">
+                          Dashboard
+                        </li>
+                      </ol>
                     </div>
                   </div>
                 </div>
@@ -81,7 +73,7 @@
                     <div class="row no-gutters">
                       <div class="col-6 align-items-center text-center">
                         <a
-                          href="#"
+                          href="<?php echo WEB_URL ?>admin/dashboard.php"
                           class="text-white active p-4 first-slider-btn ctm-border-right ctm-border-left ctm-border-top"
                         >
                           <span class="lnr lnr-home pr-0 pb-lg-2 font-23"></span>
