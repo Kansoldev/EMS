@@ -232,6 +232,13 @@ a.text-warning:hover {
   margin-bottom: 30px;
   border-radius: 10px;
 
+  &:hover {
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08) !important;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+  }
+
   &-header {
     background: none;
     padding: 1.25rem;
