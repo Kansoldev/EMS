@@ -77,11 +77,11 @@
                       
                       <div class="col-6 align-items-center shadow-none text-center">
                         <a
-                          href="#"
+                          href="<?php echo WEB_URL ?>admin/auth/logout.php"
                           class="text-dark p-4 second-slider-btn ctm-border-right ctm-border-top"
                         >
                           <span class="lnr lnr-users pr-0 pb-lg-2 font-23"></span>
-                          <span>Employees</span>
+                          <span>Logout</span>
                         </a>
                       </div>
                     </div>
@@ -119,7 +119,7 @@
                           <div class="profile-info-widget">
                             <a href="#" class="booking-doc-img">
                               <img
-                              src="<?php echo WEB_URL ?>img/profiles/img-9.jpg"
+                                src="<?php echo WEB_URL ?>img/profiles/img-9.jpg"
                                 alt="User Image"
                               />
                             </a>
