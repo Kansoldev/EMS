@@ -48,13 +48,17 @@
                 </div>
               </form>
 
-              <div class="text-center forgotpass">
-                <a href="#">Forgot Password?</a>
+                <div class="text-center forgotpass">
+                  <a href="#">Forgot Password?</a>
+                </div>
+
+                <div class="text-center dont-have">
+                  Don’t have an account? <a href="<?php echo WEB_URL ?>register.php">Register</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 <?php require_once "includes/footer.php" ?>
