@@ -30,6 +30,7 @@
                     type="text"
                     class="form-control"
                     placeholder="First name"
+                    name="firstname"
                     data-parsley-pattern="^[A-Za-z]{1,30}$"
                     data-parsley-pattern-message="Special characters or numbers not allowed"
                     data-parsley-minlength="3"
@@ -44,6 +45,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Last name"
+                    name="lastname"
                     data-parsley-pattern="^[A-Za-z]{1,30}$"
                     data-parsley-pattern-message="Special characters or numbers not allowed"
                     data-parsley-minlength="3"
@@ -58,6 +60,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Email"
+                    name="email"
                     data-parsley-pattern="/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/"
                     data-parsley-pattern-message="Use a valid email address"
                     data-parsley-required-message="Your email is required"
@@ -70,6 +73,7 @@
                     type="password"
                     class="form-control"
                     placeholder="Password"
+                    name="password"
                     data-parsley-minlength="4"
                     data-parsley-minlength-message="Password should be at least 4 characters"
                     data-parsley-required-message="Your password is required"
@@ -104,6 +108,17 @@
     $("#registerForm").parsley();
     $("#registerForm").on("submit", function (e) {
       e.preventDefault();
+
+      if ($("#registerForm").parsley().isValid()) {
+        $.ajax({
+          url: "auth/register.php",
+          method: "POST",
+          data: $(this).serialize(),
+          success: function (response) {
+            console.log("response gotten");
+          }
+        });
+      }
     });
   });
 </script>
