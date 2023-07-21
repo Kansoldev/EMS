@@ -1,4 +1,7 @@
-<?php require_once "includes/header.php" ?>
+<?php
+  $title = "Register";
+  require_once "includes/header.php";
+?>
   <div id="loader-wrapper">
     <div class="loader">
       <div class="dot"></div>
