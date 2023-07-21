@@ -57,14 +57,6 @@
                   />
                 </div>
 
-                <div class="form-group">
-                  <input
-                    type="password"
-                    class="form-control"
-                    placeholder="Confirm Password"
-                  />
-                </div>
-
                 <div class="form-group mb-0">
                   <button
                     type="submit"
