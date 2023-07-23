@@ -23,7 +23,7 @@
             $employee_id = $pdo->lastInsertId();
 
             if ($success) {
-                $sql = "INSERT INTO employee_credentials (email, password, account_status, employee_id) VALUES (:email, :password, 0, :eid)";
+                $sql = "INSERT INTO employee_credentials (email, password, employee_id) VALUES (:email, :password, :eid)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindValue(":email", $email);
                 $stmt->bindValue(":password", password_hash($password, PASSWORD_DEFAULT));
@@ -33,12 +33,8 @@
             }
 
             if ($success) {
-                $timeframe = 60 * 60 * 24; // Equals to 1 day
-
-                $sql = "INSERT INTO registration (activation_code, activation_expiry, date_registered, employee_id) VALUES (:code, :expiry, NOW(), :eid)";
+                $sql = "INSERT INTO registration (date_registered, employee_id) VALUES (NOW(), :eid)";
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindValue(":code", password_hash(bin2hex(random_bytes(16)), PASSWORD_DEFAULT));
-                $stmt->bindValue(":expiry", date('Y-m-d H:i:s', time() + $timeframe));
                 $stmt->bindValue(":eid", $employee_id);
                 $stmt->execute();
                 $success = $stmt->rowCount() > 0;
@@ -56,4 +52,3 @@
             echo "Error: " . $e->getMessage();
         }
     }
-?>
