@@ -2,6 +2,8 @@
     require_once "../config/db.php";
     require_once "../config/config.php";
 
+    $errors = array();
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         global $pdo;
         
@@ -12,6 +14,17 @@
             $lastname = $_POST["lastname"];
             $email = $_POST["email"];
             $password = $_POST["password"];
+
+            $sql = $pdo->prepare("SELECT * FROM employee_credentials WHERE email = :email");
+			$sql->bindValue(":email", $email);
+            $sql->execute();
+            $count = $sql->rowCount();
+
+            if ($count === 1) {
+                $errors["email"] = "Email already exists";
+                echo json_encode($errors);
+                exit;
+            } 
 
             $sql = "INSERT INTO employees (firstname, lastname) VALUES (:firstname, :lastname)";
             $stmt = $pdo->prepare($sql);

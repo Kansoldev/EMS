@@ -59,6 +59,7 @@
                   <input
                     type="text"
                     class="form-control"
+                    id="email"
                     placeholder="Email"
                     name="email"
                     data-parsley-pattern="/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/"
@@ -66,6 +67,8 @@
                     data-parsley-required-message="Your email is required"
                     required
                   />
+
+                  <span class="d-block invalid-feedback"></span>
                 </div>
 
                 <div class="form-group">
@@ -121,6 +124,15 @@
           success: function (response) {
             $(".button-1").removeAttr("disabled");
             $(".button-1").text("Register");
+
+            var data = JSON.parse(response);
+
+            if (data.email) {
+              $("#email").closest(".form-group").children(".invalid-feedback").text(data.email);
+              $("#email").on("input", function() {
+                $("#email").closest(".form-group").children(".invalid-feedback").text("");
+              })
+            }
           }
         });
       }
