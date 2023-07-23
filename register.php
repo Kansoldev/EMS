@@ -114,8 +114,13 @@
           url: "auth/register.php",
           method: "POST",
           data: $(this).serialize(),
+          beforeSend: function() {
+            $(".button-1").attr("disabled", true);
+            $(".button-1").text("Please wait...");
+          },
           success: function (response) {
-            console.log("response gotten");
+            $(".button-1").removeAttr("disabled");
+            $(".button-1").text("Register");
           }
         });
       }
