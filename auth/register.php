@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     require_once "../config/db.php";
     require_once "../config/config.php";
 
@@ -55,13 +57,11 @@
 
             if ($success) {
                 $pdo->commit();
-                echo "Queries executed successfully";
-            } else {
-                $pdo->rollBack();
-                echo "Error: Failed to execute one of the queries.";
+                $_SESSION["employee_id"] = $employee_id;
             }
         } catch (Exception $e) {
             $pdo->rollBack();
-            echo "Error: " . $e->getMessage();
         }
     }
+
+    echo json_encode($errors);
