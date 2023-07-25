@@ -97,8 +97,7 @@
 
       if ($("#employeeDetails").parsley().isValid()) {
         $.ajax({
-          // url: "<?php echo $_SERVER["PHP_SELF"] ?>",
-          url: "auth/CompleteReg.php",
+          url: "auth/AddNewEmployee.php",
           method: "POST",
           data: $(this).serialize(),
           beforeSend: function() {
