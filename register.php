@@ -71,9 +71,10 @@
                   <span class="d-block invalid-feedback"></span>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group position-relative">
                   <input
                     type="password"
+                    id="password"
                     class="form-control"
                     placeholder="Password"
                     name="password"
@@ -82,6 +83,10 @@
                     data-parsley-required-message="Your password is required"
                     required
                   />
+
+                  <span class="eye-icon">
+                    <i class="fa fa-eye"></i>
+                  </span>
                 </div>
 
                 <div class="form-group mb-0">
@@ -126,6 +131,10 @@
             $(".button-1").text("Register");
 
             var data = JSON.parse(response);
+
+            if (data.length === 0) {
+              window.location = "<?php echo WEB_URL ?>NewEmployee.php";
+            }
 
             if (data.email) {
               $("#email").closest(".form-group").children(".invalid-feedback").text(data.email);
