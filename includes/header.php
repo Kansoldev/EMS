@@ -1,5 +1,5 @@
 <?php
-  // Determine thCheck for the folder i am in (either admin or the root folder) to append the correct prefix
+  // Check for the folder i am in (either admin or the root folder) to append the correct prefix
   $prefix = "";
 
   if (strpos($_SERVER['PHP_SELF'], "admin")) {
@@ -7,6 +7,12 @@
   }
 
   require_once $prefix . "config/config.php";
+
+  if (isset($title)) {
+    $title = "EMS | " . $title;
+  } else {
+    $title = "Login";
+  }
 ?>
 
 <!DOCTYPE html>
