@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="<?php echo WEB_URL ?>css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo WEB_URL ?>css/lnr-icon.css" />
     <link rel="stylesheet" href="<?php echo WEB_URL ?>css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?php echo WEB_URL ?>css/select2.min.css" />
     <link rel="stylesheet" href="<?php echo WEB_URL ?>css/style.css" />
     <title><?php echo $title ?? "Login" ?></title>
   </head>
