@@ -18,19 +18,6 @@
       width: "100%",
     });
   }
-  // Date Time Picker
-
-  if ($(".datetimepicker").length > 0) {
-    $(".datetimepicker").datetimepicker({
-      format: "DD/MM/YYYY",
-      icons: {
-        up: "fa fa-angle-up",
-        down: "fa fa-angle-down",
-        next: "fa fa-angle-right",
-        previous: "fa fa-angle-left",
-      },
-    });
-  }
 
   $(window).on("load", function () {
     $("#loader").delay(100).fadeOut("slow");
