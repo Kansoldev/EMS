@@ -68,10 +68,6 @@
                   </button>
                 </div>
               </form>
-
-              <div class="text-center forgotpass">
-                <a href="#">Forgot Password?</a>
-              </div>
             </div>
           </div>
         </div>
