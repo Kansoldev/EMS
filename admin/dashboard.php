@@ -15,6 +15,11 @@
   foreach ($salaries as $key => $employee) {
     $totalEmployeeSalaries += $employee["salary"];
   }
+
+  $stmt = $pdo->prepare("SELECT * FROM employee_leave el JOIN employees emp ON el.employee_id = emp.id");
+  $stmt->execute();
+  $leavesCount = $stmt->rowCount();
+  $leaveRequests = $stmt->fetchAll();
 ?>
   <div class="inner-wrapper">
     <div id="loader-wrapper">
@@ -191,6 +196,80 @@
 
                   <div class="card-body">
                     <canvas id="pieChart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card ctm-border-radius shadow-sm grow">
+                  <div class="card-header">
+                    <h4 class="card-title mb-0">Leave Requests</h4>
+                  </div>
+
+                  <div class="card-body">
+                    <?php if ($leavesCount > 0): ?>
+                      <div class="employee-office-table">
+                        <div class="table-responsive">
+                          <table class="table custom-table mb-0">
+                            <thead>
+                              <tr>
+                                <th>Employee</th>
+                                <th>Leave Type</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Days</th>
+                                <th>Remaining Days</th>
+                                <th>Notes</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <?php foreach ($leaveRequests as $leave): ?>
+                                <tr>
+                                  <td>
+                                    <a href="#" class="avatar">
+                                      <img
+                                        alt="avatar image"
+                                        src="<?php echo WEB_URL ?>img/profiles/user.webp"
+                                        class="img-fluid"
+                                      />
+                                    </a>
+                                    
+                                    <h2><?php echo ucfirst($leave["firstname"]) . " " . ucfirst($leave["lastname"]) ?></h2>
+                                  </td>
+                                  <td><?php echo ucfirst($leave["leave_type"]) ?></td>
+                                  <td><?php echo $leave["start"] ?></td>
+                                  <td><?php echo $leave["end"] ?></td>
+                                  <td><?php echo dateDiff($leave["start"], $leave["end"]) ?></td>
+                                  <td><?php echo dateDiff(date("Y-m-d"), $leave["end"]) ?></td>
+                                  <td><?php echo $leave["reason"] ?></td>
+                                  <td>
+                                    <a
+                                      href="javascript:void(0)"
+                                      class="btn btn-theme ctm-border-radius text-white btn-sm"
+                                    >Approved</a>
+                                  </td>
+                                  <td class="text-right text-danger">
+                                    <a
+                                      href="javascript:void(0);"
+                                      class="btn btn-sm btn-outline-danger"
+                                      data-toggle="modal"
+                                      data-target="#delete"
+                                    >
+                                      <span class="lnr lnr-trash"></span> Decline
+                                    </a>
+                                  </td>
+                                </tr>
+                              <?php endforeach ?>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <?php else: ?>
+                        <h5 class="font-weight-bold">No Employee leave requests</h5>
+                    <?php endif ?>
                   </div>
                 </div>
               </div>
