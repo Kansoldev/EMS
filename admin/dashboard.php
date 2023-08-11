@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <?php require_once "../includes/topHeader.php" ?>
+    <?php require_once "includes/topHeader.php" ?>
 
     <div class="page-wrapper">
       <div class="container-fluid">
@@ -56,7 +56,7 @@
                 <div class="user-info card-body">
                   <div class="user-avatar mb-4">
                     <img
-                      src="<?php echo WEB_URL ?>img/profiles/img-13.jpg"
+                      src="<?php echo WEB_URL ?>img/profiles/user.webp"
                       alt="User Avatar"
                       class="img-fluid rounded-circle"
                       width="100"
