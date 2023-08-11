@@ -5,6 +5,10 @@
   require_once "../includes/functions.php";
   require_once "../includes/header.php";
 
+  if (!isset($_SESSION["admin"])) {
+    header("location: " . WEB_URL . "admin");
+  }
+
   $salaries = queryTableColumn("salaries", "salary");
   $totalEmployeeSalaries = 0;
 
