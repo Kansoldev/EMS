@@ -1,7 +1,5 @@
 <?php
-  session_start();
-
-  $title = "EMS | Admin Dashboard";
+  $title = "Admin Dashboard";
 
   require_once "../config/db.php";
   require_once "../includes/functions.php";
