@@ -190,8 +190,15 @@
             <div class="row">
               <div class="col-md-6 d-flex">
                 <div class="card ctm-border-radius shadow-sm flex-fill grow">
-                  <div class="card-header">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <h4 class="card-title mb-0">Total Employees</h4>
+
+                    <a
+                      href="<?php echo WEB_URL ?>admin/employees.php"
+                      class="float-right btn btn-theme button-1 text-white ctm-border-radius p-2 ctm-btn-padding"
+                    >
+                      View Employees
+                    </a>
                   </div>
 
                   <div class="card-body">
