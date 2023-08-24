@@ -1,4 +1,6 @@
 <?php
+  session_start();
+  
   // Check for the folder i am in (either admin or the root folder) to append the correct prefix
   $prefix = "";
 
@@ -6,6 +8,8 @@
     $prefix = "../";
   }
 
+  require_once $prefix . "config/db.php";
+  require_once $prefix . "includes/functions.php";
   require_once $prefix . "config/config.php";
 
   if (isset($title)) {
