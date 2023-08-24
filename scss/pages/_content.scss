@@ -143,3 +143,22 @@
   display: flex;
   align-items: center;
 }
+
+table.table td {
+  h2 {
+    display: inline-block;
+    font-size: inherit;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+
+    a {
+      color: #333;
+    }
+  }
+
+  .avatar {
+    margin-right: 5px;
+  }
+}
