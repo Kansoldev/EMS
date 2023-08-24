@@ -68,10 +68,6 @@
                 </div>
               </form>
 
-              <div class="text-center forgotpass">
-                <a href="#">Forgot Password?</a>
-              </div>
-
               <div class="text-center dont-have">
                 Don’t have an account? <a href="<?php echo WEB_URL ?>register.php">Register</a>
               </div>
@@ -83,7 +79,6 @@
   </div>
 <?php require_once "includes/footer.php" ?>
 
-<script src="<?php echo WEB_URL ?>js/parsley.min.js"></script>
 <script>
   $(function () {
     $("#LoginForm").parsley();

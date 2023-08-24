@@ -110,7 +110,6 @@
   </div>
 <?php require_once "includes/footer.php" ?>
 
-<script src="<?php echo WEB_URL ?>js/parsley.min.js"></script>
 <script>
   $(function () {
     $("#registerForm").parsley();
