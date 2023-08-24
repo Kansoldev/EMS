@@ -1,5 +1,5 @@
 <?php
-  $title = "EMS | Admin login";
+  $title = "Admin login";
   require_once "../includes/header.php";
 ?>
   <div id="loader-wrapper">
@@ -76,7 +76,6 @@
   </div>
 <?php require_once "../includes/footer.php" ?>
 
-<script src="<?php echo WEB_URL ?>js/parsley.min.js"></script>
 <script>
   $(function () {
     $("#adminLoginForm").parsley();
