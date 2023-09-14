@@ -9,14 +9,14 @@
     header("location: " . WEB_URL . "admin");
   }
 
-  $salaries = queryTableColumn("salaries", "salary");
+  $salaries = queryTableColumn("employees", "salary");
   $totalEmployeeSalaries = 0;
 
   foreach ($salaries as $key => $employee) {
     $totalEmployeeSalaries += $employee["salary"];
   }
 
-  $stmt = $pdo->prepare("SELECT * FROM employee_leave el JOIN employees emp ON el.employee_id = emp.id");
+  $stmt = $pdo->prepare("SELECT * FROM leave_requests lr JOIN employees emp ON lr.employee_id = emp.id");
   $stmt->execute();
   $leavesCount = $stmt->rowCount();
   $leaveRequests = $stmt->fetchAll();
@@ -80,7 +80,7 @@
 
                     <div class="card-right">
                       <h4 class="card-title">Leaves</h4>
-                      <p class="card-text">1</p>
+                      <p class="card-text"><?php echo countTableAll("leave_requests") ?></p>
                     </div>
                   </div>
                 </div>
@@ -203,59 +203,53 @@
                   <div class="card-header">
                     <h4 class="card-title mb-0 d-inline-block">Today</h4>
 
-                    <a
-                      href="javascript:void(0)"
-                      class="d-inline-block float-right text-primary"
+                    <button
+                      class="float-right btn btn-theme button-1 text-white ctm-border-radius p-2 ctm-btn-padding"
+                      data-toggle="modal"
+                      data-target="#addNewFaculty"
                     >
-                      <i class="lnr lnr-sync"></i>
-                    </a>
+                      Add new Faculty <i class="fa fa-plus"></i>
+                    </button>
                   </div>
 
-                  <div class="card-body recent-activ">
-                    <div class="recent-comment">
-                      <a
-                        href="javascript:void(0)"
-                        class="dash-card text-dark"
-                      >
-                        <div class="dash-card-container">
-                          <div class="dash-card-icon text-primary">
-                            <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-                          </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table custom-table mb-0">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
 
-                          <div class="dash-card-content">
-                            <h6 class="mb-0">No Birthdays Today</h6>
-                          </div>
-                        </div>
-                      </a>
+                        <tbody id="faculty-info">
+                          <?php
+                            $faculties = queryTableColumn("faculties");
+                            foreach ($faculties as $faculty) {
+                          ?>
+                            <tr>
+                              <td><?php echo ucwords($faculty["faculty_name"]) ?></td>
+                              <td>
+                                <a
+                                  href="javascript:void(0)"
+                                  class="btn btn-theme ctm-border-radius text-white btn-sm"
+                                >
+                                  Edit
+                                </a>
+                              </td>
 
-                      <hr />
-
-                      <a
-                        href="javascript:void(0)"
-                        class="dash-card text-dark"
-                      >
-                        <div class="dash-card-container">
-                          <div class="dash-card-icon text-warning">
-                            <i class="fa fa-bed" aria-hidden="true"></i>
-                          </div>
-
-                          <div class="dash-card-content">
-                            <h6 class="mb-0">
-                              Ralph Baker is off sick today
-                            </h6>
-                          </div>
-
-                          <div class="dash-card-avatars">
-                            <div class="e-avatar">
-                              <img
-                                class="img-fluid"
-                                src="<?php echo WEB_URL ?>img/profiles/img-9.jpg"
-                                alt="Avatar"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </a>
+                              <td>
+                                <a
+                                  href="javascript:void(0);"
+                                  class="btn btn-sm btn-danger ctm-border-radius"
+                                >
+                                  Delete
+                                </a>
+                              </td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -406,7 +400,100 @@
   </div>
 
   <div class="sidebar-overlay" id="sidebar_overlay"></div>
+
+  <div class="modal fade" id="addNewFaculty">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          <h4 class="modal-title mb-3">Create a new Faculty</h4>
+
+          <form action="" id="addFacultyForm">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="faculty"
+                name="faculty_name"
+                placeholder="Faculty name"
+                data-parsley-required-message="Enter the Faculty name"
+                required
+              />
+
+              <span class="d-block invalid-feedback"></span>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-theme button-1 text-white ctm-border-radius float-right"
+            >
+              Add
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 <?php require_once "../includes/footer.php" ?>
 
 <script src="<?php echo WEB_URL ?>js/chart.min.js"></script>
 <script src="<?php echo WEB_URL ?>js/chart.js"></script>
+<script>
+  $(function() {
+    $("#addFacultyForm").parsley();
+    $("#addFacultyForm").on("submit", function (e) {
+      e.preventDefault();
+
+      if ($("#addFacultyForm").parsley().isValid()) {
+        $.ajax({
+          url: "src/AddFaculty.php",
+          method: "POST",
+          data: $(this).serialize(),
+          success: function (response) {
+            var data = JSON.parse(response);
+            let text = "";
+            
+            if (data.message) {
+              $("#faculty").closest(".form-group").children(".invalid-feedback").text(data.message);
+              $("#faculty").on("input", function() {
+                $("#faculty").closest(".form-group").children(".invalid-feedback").text("");
+              })
+            }
+
+            if (data.faculties) {
+              $("#addFacultyForm").trigger("reset");
+
+              data.faculties.map(result => {
+                text += `
+                  <tr>
+                    <td>${result.faculty_name}</td>
+                    <td>
+                      <a
+                        href="javascript:void(0)"
+                        class="btn btn-theme ctm-border-radius text-white btn-sm"
+                      >
+                        Edit
+                      </a>
+                    </td>
+
+                    <td>
+                      <a
+                        href="javascript:void(0);"
+                        class="btn btn-sm btn-danger ctm-border-radius"
+                      >
+                        Delete
+                      </a>
+                    </td>
+                  </tr>
+                `;
+              })
+
+              document.querySelector("#faculty-info").innerHTML = text;
+            }
+          }
+        });
+      }
+    });
+  });
+</script>
