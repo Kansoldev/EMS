@@ -1,6 +1,4 @@
 <?php
-  session_start();
-
   $title = "Employee Dashboard";
   require_once "includes/header.php";
 ?>
