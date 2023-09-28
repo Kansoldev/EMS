@@ -1,9 +1,9 @@
 <?php
   $title = "Employee Profile";
+  
   require_once "includes/header.php";
   require_once "includes/functions.php";
    
-  // $select_employee_stmt
   $selectEmployeeStmt = $pdo->prepare("SELECT * FROM employees emp JOIN employee_credentials ec ON emp.id = ec.employee_id JOIN departments ON emp.department_id = departments.id WHERE emp.id = :eid");
   $selectEmployeeStmt->bindValue(":eid", $_SESSION["employee_id"]);
   $selectEmployeeStmt->execute();
@@ -84,6 +84,12 @@
                       <p class="card-text mb-3">
                         <span class="text-primary">Residential Address : </span><?php echo $employee["address"] ?>
                       </p>
+
+                      <button
+                        class="btn btn-theme ctm-border-radius"
+                        data-toggle="modal"
+                        data-target="#edit_contact"
+                      > Edit </button>
                     </div>
                   </div>
                 </div>
@@ -113,4 +119,91 @@
     </div>
 
     <div class="sidebar-overlay" id="sidebar_overlay"></div>
+
+    <div class="modal fade" id="edit_contact">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+
+            <h4 class="modal-title mb-3">Edit Contact</h4>
+
+            <div class="alert alert-success fade show d-none" role="alert">
+              <p></p>  
+            </div>
+
+            <form action="" class="editProfileForm">
+              <div class="input-group mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="Email"
+                  value="<?php echo $employee["email"] ?>"
+                  style="cursor: not-allowed"
+                  disabled
+                />
+              </div>
+
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="phone"
+                  placeholder="Phone number"
+                  value="<?php echo $employee["phone_number"] ?>"
+                />
+              </div>
+
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="address"
+                  placeholder="Address"
+                  value="<?php echo $employee["address"] ?>"
+                />
+              </div>
+
+              <input type="hidden" value="<?php echo $_SESSION["employee_id"] ?>" name="employee_id">
+
+              <button
+                type="submit"
+                class="btn btn-theme ctm-border-radius button-1"
+              >
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 <?php require_once "includes/footer.php" ?>
+
+<script>
+  $(function () {
+    $(".editProfileForm").on("submit", function (e) {
+        e.preventDefault();
+
+        $.ajax({
+          url: "src/EditProfile.php",
+          method: "POST",
+          data: $(this).serialize(),
+          success: function (response) {
+            if (response) {
+              var data = JSON.parse(response);
+
+              $(".alert.alert-success").removeClass("d-none");
+              $(".alert.alert-success").children("p")[0].textContent = data.message;
+              
+              setTimeout(() => {
+                $(".alert.alert-success").addClass("d-none");
+              }, 3000)
+            }
+          }
+        });
+      });
+    });
+</script>
