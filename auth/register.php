@@ -3,6 +3,7 @@
 
     require_once "../config/db.php";
     require_once "../config/config.php";
+    require_once "../includes/functions.php";
 
     $errors = array();
 
@@ -12,10 +13,16 @@
         try {
             $pdo->beginTransaction();
 
-            $firstname = $_POST["firstname"];
-            $lastname = $_POST["lastname"];
-            $email = $_POST["email"];
-            $password = $_POST["password"];
+            $firstname = validate($_POST["firstname"]);
+            $lastname = validate($_POST["lastname"]);
+            $email = validate($_POST["email"]);
+            $password = validate($_POST["password"]);
+            $job_title = validate($_POST["job"]);
+            $phone_no = validate($_POST["phone"]);
+            $dob = validate($_POST["dob"]);
+            $gender = validate($_POST["gender"]);
+            $address = validate($_POST["address"]);
+            $departmentID = validate($_POST["department"]);
 
             $sql = $pdo->prepare("SELECT * FROM employee_credentials WHERE email = :email");
 			$sql->bindValue(":email", $email);
@@ -28,10 +35,16 @@
                 exit;
             } 
 
-            $sql = "INSERT INTO employees (firstname, lastname) VALUES (:firstname, :lastname)";
+            $sql = "INSERT INTO employees (firstname, lastname, dob, gender, phone_number, job_title, address, department_id) VALUES (:firstname, :lastname, :dob, :gender, :phone, :job, :address, :did)";
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(":firstname", $firstname);
             $stmt->bindValue(":lastname", $lastname);
+            $stmt->bindValue(":dob", $dob);
+            $stmt->bindValue(":gender", $gender);
+            $stmt->bindValue(":phone", $phone_no);
+            $stmt->bindValue(":job", $job_title);
+            $stmt->bindValue(":address", $address);
+            $stmt->bindValue(":did", $departmentID);
             $stmt->execute();
 
             $success = $stmt->rowCount() > 0;
@@ -57,7 +70,6 @@
 
             if ($success) {
                 $pdo->commit();
-                $_SESSION["employee_id"] = $employee_id;
             }
         } catch (Exception $e) {
             $pdo->rollBack();
