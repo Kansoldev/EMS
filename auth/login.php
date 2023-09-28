@@ -3,16 +3,17 @@
 
     require_once "../config/db.php";
     require_once "../config/config.php";
+    require_once "../includes/functions.php";
 
     $errors = array();
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         global $pdo;
         
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+        $email = validate($_POST["email"]);
+        $password = validate($_POST["password"]);
 
-        $stmt = $pdo->prepare("SELECT email, password, employee_id, firstname FROM employee_credentials ec JOIN employees emp ON ec.employee_id = emp.id WHERE email = :email");
+        $stmt = $pdo->prepare("SELECT * FROM employee_credentials WHERE email = :email");
         $stmt->bindValue(":email", $email);
         $stmt->execute();
         $count = $stmt->rowCount();
@@ -23,16 +24,14 @@
             exit;
         }
 
-        if ($count > 0) {
-            $result = $stmt->fetch();
+        $result = $stmt->fetch();
 
-            if (!password_verify($password, $result["password"])) {
-                $errors["password"] = "Your password is not correct";
-            }
+        if (!password_verify($password, $result["password"])) {
+            $errors["password"] = "Your password is not correct";
         }
 
         if (empty($errors)){
-            $_SESSION["employee"] = $result["firstname"];
+            $_SESSION["employee_id"] = $result["employee_id"];
         }
     }
 
