@@ -81,6 +81,14 @@
           }
         }
       }
+
+      .form-section {
+        display: none;
+
+        &.current {
+          display: inherit;
+        }
+      }
     }
   }
 }
