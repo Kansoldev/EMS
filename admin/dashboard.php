@@ -161,16 +161,16 @@
                                     <h2><?php echo ucfirst($leave["firstname"]) . " " . ucfirst($leave["lastname"]) ?></h2>
                                   </td>
                                   <td><?php echo ucfirst($leave["leave_type"]) ?></td>
-                                  <td><?php echo $leave["start"] ?></td>
-                                  <td><?php echo $leave["end"] ?></td>
-                                  <td><?php echo dateDiff($leave["start"], $leave["end"]) ?></td>
-                                  <td><?php echo dateDiff(date("Y-m-d"), $leave["end"]) ?></td>
+                                  <td><?php echo $leave["start_date"] ?></td>
+                                  <td><?php echo $leave["end_date"] ?></td>
+                                  <td><?php echo dateDiff($leave["start_date"], $leave["end_date"]) ?></td>
+                                  <td><?php echo dateDiff(date("Y-m-d"), $leave["end_date"]) ?></td>
                                   <td><?php echo $leave["reason"] ?></td>
                                   <td>
                                     <a
                                       href="javascript:void(0)"
                                       class="btn btn-theme ctm-border-radius text-white btn-sm"
-                                    >Approved</a>
+                                    >Approve</a>
                                   </td>
                                   <td class="text-right text-danger">
                                     <a
