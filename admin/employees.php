@@ -33,7 +33,7 @@
                 <ul class="nav nav-tabs float-right border-0 tab-list-emp">
                   <li class="nav-item pl-3">
                     <a
-                      href="#"
+                      href="<?php echo WEB_URL ?>admin/add-employee.php"
                       class="btn btn-theme button-1 text-white ctm-border-radius p-2 add-person ctm-btn-padding"
                     >
                       <i class="fa fa-plus"></i>&nbsp;&nbsp;Add Employee
