@@ -6,6 +6,10 @@
       $breadcrumb = "Employees";
       break;
 
+    case "add-employee.php":
+      $breadcrumb = "Add Employee";
+      break;
+
     default:
       $breadcrumb = "Dashboard";
   }
