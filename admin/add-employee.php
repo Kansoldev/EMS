@@ -1,5 +1,5 @@
 <?php
-  $title = "EMS | Add Employee";
+  $title = "Add Employee";
   require_once "../config/db.php";
   require_once "../includes/header.php";
   require_once "../includes/functions.php";
@@ -56,6 +56,10 @@
                             class="form-control"
                             name="firstname"
                             placeholder="First Name"
+                            data-parsley-pattern="^[A-Za-z]{1,30}$"
+                            data-parsley-pattern-message="Special characters or numbers are not allowed"
+                            data-parsley-required-message="First name is required"
+                            required       
                           />
                         </div>
 
@@ -65,6 +69,10 @@
                             class="form-control"
                             name="lastname"
                             placeholder="Last Name"
+                            data-parsley-pattern="^[A-Za-z]{1,30}$"
+                            data-parsley-pattern-message="Special characters or numbers are not allowed"
+                            data-parsley-required-message="Last name is required"
+                            required
                           />
                         </div>
 
@@ -74,6 +82,10 @@
                             class="form-control"
                             name="phone_number"
                             placeholder="Phone number"
+                            data-parsley-pattern="^[0-9]{1,30}$"
+                            data-parsley-pattern-message="Phone number should have only numbers"
+                            data-parsley-required-message="Phone number is required"
+                            required
                           />
                         </div>
 
@@ -83,6 +95,10 @@
                             class="form-control"
                             name="email"
                             placeholder="Email"
+                            data-parsley-pattern="/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/"
+                            data-parsley-pattern-message="Use a valid email address"
+                            data-parsley-required-message="Your email is required"
+                            required
                           />
                         </div>
                       </div>
@@ -119,6 +135,8 @@
                               type="text"
                               name="dob"
                               placeholder="Date of birth"
+                              data-parsley-required-message="DOB is required"
+                              required
                             />
                           </div>
                         </div>
@@ -130,6 +148,8 @@
                               type="text"
                               name="hired"
                               placeholder="Hired date"
+                              data-parsley-required-message="Specify date employee was hired"
+                              required
                             />
                           </div>
                         </div>
@@ -140,6 +160,8 @@
                             class="form-control"
                             name="job"
                             placeholder="Job Title"
+                            data-parsley-required-message="Job title is required"
+                            required
                           />
                         </div>
 
@@ -149,6 +171,8 @@
                             class="form-control"
                             name="address"
                             placeholder="Address"
+                            data-parsley-required-message="Address is required"
+                            required
                           />
                         </div>
 
@@ -160,6 +184,7 @@
                               type="radio"
                               class="custom-control-input"
                               id="male"
+                              value="male"
                               name="gender"
                               checked
                             />
@@ -172,6 +197,7 @@
                               type="radio"
                               class="custom-control-input"
                               id="female"
+                              value="female"
                               name="gender"
                             />
 
@@ -180,7 +206,13 @@
                         </div>
 
                         <div class="col-md-6 form-group">
-                          <select id="faculties" class="form-control" name="faculties">
+                          <select
+                            id="faculties"
+                            class="form-control"
+                            name="faculty"
+                            data-parsley-required-message="Select a faculty"
+                            required
+                          >
                             <option value="">Select faculty</option>
 
                             <?php foreach ($faculties as $faculty): ?>
@@ -189,7 +221,7 @@
                           </select>
                         </div>
 
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-6 form-group d-none">
                           <select id="departments" class="form-control" name="department">
                             <option value="">Select department</option>
                           </select>
@@ -225,6 +257,10 @@
                             class="form-control"
                             name="amount"
                             placeholder="Amount"
+                            data-parsley-pattern="^[0-9]{1,30}$"
+                            data-parsley-pattern-message="Salary amount should have only numbers"
+                            data-parsley-required-message="Indicate employees salary"
+                            required
                           />
                         </div>
                       </div>
@@ -275,6 +311,31 @@
           option.appendChild(document.createTextNode(department.department_name));
           document.querySelector("#departments").appendChild(option);
         })
+      }
+    });
+  });
+
+  $(function () {
+    $("#addEmployeeForm").parsley();
+    $("#addEmployeeForm").on("submit", function (e) {
+      e.preventDefault();
+
+      if ($("#addEmployeeForm").parsley().isValid()) {
+        $.ajax({
+          url: "./src/AddEmployee.php",
+          method: "POST",
+          data: $(this).serialize(),
+          success: function (response) {
+            var data = JSON.parse(response);
+
+            if (data.message) {
+              swal(data.message, "", "success");
+              $("#addEmployeeForm").trigger("reset");
+              document.querySelector("#departments").innerHTML = "";
+              document.querySelector("#departments").parentElement.classList.add("d-none");
+            }
+          }
+        });
       }
     });
   });
